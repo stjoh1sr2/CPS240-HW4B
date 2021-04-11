@@ -12,19 +12,18 @@ public class NewtonsLaw {
 	static double[] tempobject;
 
 	public static void main(String[] args) {
-		/* 
-		 * The rate r for this case was found using the difference equation
-		 * dT/dt = r(Temp - Temp_environment).
+		/*
+		 * The rate r for this case was found using the difference equation dT/dt =
+		 * r(Temp - Temp_environment).
 		 */
 		System.out.println("The simulation using difference equation approach");
 		SimNewtonsLawWDifferenceEq(2.5, 75, 4, -0.4225352113, .005);
-		
+
 		/*
-		 * Using the approach of setting a time large enough to for
-		 * the bucket to freeze then using small intervals to get 
-		 * an accurate estimate of when the temperature hit 32 degrees, 
-		 * we find that it takes about 2.2 hours (132 minutes) for the 
-		 * water in the bucket to freeze.
+		 * Using the approach of setting a time large enough to for the bucket to freeze
+		 * then using small intervals to get an accurate estimate of when the
+		 * temperature hit 32 degrees, we find that it takes about 2.2 hours (132
+		 * minutes) for the water in the bucket to freeze.
 		 */
 
 		System.out.println("----------------------");
@@ -71,14 +70,14 @@ public class NewtonsLaw {
 	/**
 	 * Simulates Newton's Law using an analytical equation.
 	 *
-	 * @param length  - the length of the simulation
-	 * @param temp_0  - intial temperature of the object
-	 * @param temp_e  - temperature of the environment
-	 * @param r       - heating/cooling rate constant. Positive if heating process,
-	 *                and negative if cooling process
-	 * @param delta_t - the change in time between each iteration
+	 * @param length          - the length of the simulation
+	 * @param initTemp        - initial temperature of the object
+	 * @param envTemp         - temperature of the environment
+	 * @param heatingConstant - heating/cooling rate constant. Positive if heating
+	 *                        process, and negative if cooling process
+	 * @param timeStep        - the change in time between each iteration
 	 */
-	public static void AnalysticNewtonsLaw(double length, double initTemp, double envTemp, double heatingConstatnt,
+	public static void AnalysticNewtonsLaw(double length, double initTemp, double envTemp, double heatingConstant,
 			double timeStep) {
 		int n = (int) Math.ceil(length / timeStep);
 
@@ -90,7 +89,7 @@ public class NewtonsLaw {
 
 		for (int i = 1; i < n + 1; i++) {
 			t[i] = t[i - 1] + timeStep;
-			tempObject[i] = envTemp + initTemp * Math.exp(heatingConstatnt * t[i]);
+			tempObject[i] = envTemp + initTemp * Math.exp(heatingConstant * t[i]);
 
 		}
 
